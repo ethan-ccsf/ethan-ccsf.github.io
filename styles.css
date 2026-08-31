@@ -1,0 +1,25 @@
+body {
+    background-color: #ede8d0;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    text-align: center;
+}
+
+h1 {
+    font-size: 64px;
+}
+
+.homework-list {
+    border: 4px;
+    border-color: #c9b3a1;
+    border-style: solid;
+    border-radius: 32px;
+    padding: 16px;
+    width: fit-content;
+    list-style: none;
+    font-size: 32px;
+}
