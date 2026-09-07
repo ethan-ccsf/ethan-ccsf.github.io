@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 2 - Part 2</title>
+    <meta name="description" content="Homework 2 for the CNIT 133 JavaScript course at CCSF">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#calculate").click(function () {
+                $("#output")
+                    .hide()
+                    .fadeTo("slow", 1);
+                const integer1 = +$("#integer1").val();
+                const integer2 = +$("#integer2").val();
+                const integer3 = +$("#integer3").val();
+                if (Number.isNaN(integer1) || Number.isNaN(integer2) || Number.isNaN(integer3)) {
+                    $("#output").html("Please type numbers only!");
+                    return;
+                }
+                const sum = integer1 + integer2 + integer3;
+                const average = sum / 3;
+                const product = integer1 * integer2 * integer3;
+                const min = Math.min(integer1, integer2, integer3);
+                const max = Math.max(integer1, integer2, integer3);
+                $("#output").html(`Sum: ${sum}<br>Average: ${average}<br>Product: ${product}<br>Minimum: ${min}<br>Maximum: ${max}`);
+            });
+            $("#clear").click(function () {
+                $("#integer1").val("");
+                $("#integer2").val("");
+                $("#integer3").val("");
+                $("#output").text("");
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <h1>Homework 2 - Part 2</h1>
+
+    <a href="hw2.html">Back</a>
+
+    <input id="integer1" placeholder="Integer #1">
+    <input id="integer2" placeholder="Integer #2">
+    <input id="integer3" placeholder="Integer #3">
+
+    <button id="calculate">Calculate</button>
+    <button id="clear">Clear</button>
+
+    <p id="output"></p>
+</body>
+
+</html>
