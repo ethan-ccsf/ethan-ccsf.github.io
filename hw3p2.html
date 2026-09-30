@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework 3 - Part 2</title>
+  <meta name="description" content="Homework 3 for the CNIT 133 JavaScript course at CCSF">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $("#calculate").click(function () {
+        $("#output")
+          .hide()
+          .fadeTo("slow", 1);
+        const quantities = [];
+        for (let i = 1; i <= 4; i++) {
+          const value = +$(`#item${i}`).val();
+          if (value < 0) {
+            $("#output").html("Item quantity cannot be negative!");
+          }
+          quantities.push(value);
+        }
+        const prices = [20.99, 12.75, 9.95, 35.89];
+        const totals = [];
+        for (let i = 0; i < 4; i++) {
+          totals.push(Math.round(quantities[i] * prices[i] * 100) / 100);
+        }
+        let quantity = 0;
+        for (const n of quantities) {
+          quantity += n;
+        }
+        let total = 250;
+        for (const n of totals) {
+          total += n * 0.09;
+        }
+        total = Math.round(total * 100) / 100;
+        let output = "";
+        for (let i = 0; i < 4; i++) {
+          output += `Item #${i + 1}, Price: $${prices[i]}, Qty Sold: ${quantities[i]}, Total $${totals[i]}<br>`;
+        }
+        output += `Total Amount Sold: ${quantity}<br>Total Weekly Earnings: $${total}`
+        $("#output").html(output);
+      });
+      $("#clear").click(function () {
+        for (let i = 1; i <= 4; i++) {
+          $(`#item${i}`).val("");
+        }
+        $("#output").text("");
+      });
+    });
+
+  </script>
+</head>
+
+<body>
+  <h1>Homework 3 - Part 2</h1>
+
+  <a href="hw3.html">Back</a>
+
+  <input id="item1" placeholder="Item 1 Qty" type="number">
+  <input id="item2" placeholder="Item 2 Qty" type="number">
+  <input id="item3" placeholder="Item 3 Qty" type="number">
+  <input id="item4" placeholder="Item 4 Qty" type="number">
+
+  <button id="calculate">Calculate</button>
+  <button id="clear">Clear</button>
+
+  <p id="output"></p>
+</body>
+
+</html>

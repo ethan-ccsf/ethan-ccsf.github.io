@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework 3 - Part 1</title>
+  <meta name="description" content="Homework 3 for the CNIT 133 JavaScript course at CCSF">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $("#calculate").click(function () {
+        $("#output")
+          .hide()
+          .fadeTo("slow", 1);
+        const homeworkAverage = +$("#homework-average").val();
+        const midTerm = +$("#mid-term-exam").val();
+        const finalExam = +$("#final-exam").val();
+        const participation = +$("#participation").val();
+        const values = [homeworkAverage, midTerm, finalExam, participation];
+        for (const value of values) {
+          if (Number.isNaN(value)) {
+            $("#output").html("Please type numbers only!");
+            return;
+          }
+          if (value < 0 || value > 100) {
+            $("#output").html("Numbers must be between 0 and 100!");
+            return;
+          }
+        }
+        const finalAverage = Math.round((0.5 * homeworkAverage) + (0.2 * midTerm) + (0.2 * finalExam) + (0.1 * participation));
+        let letterGrade;
+        if (finalAverage >= 90) {
+          letterGrade = "A";
+        } else if (finalAverage >= 80) {
+          letterGrade = "B";
+        } else if (finalAverage >= 70) {
+          letterGrade = "C";
+        } else if (finalAverage >= 60) {
+          letterGrade = "D";
+        } else {
+          letterGrade = "F";
+        }
+        let output = `Final Average: ${finalAverage}%<br>Letter Grade:${letterGrade}`;
+        if (letterGrade === "D" || letterGrade === "F") {
+          output += "<br><b>Student must retake the course</b>"
+        }
+        $("#output").html(output);
+      });
+      $("#clear").click(function () {
+        $("homework-average").val("");
+        $("mid-term-exam").val("");
+        $("final-exam").val("");
+        $("participation").val("");
+        $("#output").text("");
+      });
+    });
+
+  </script>
+</head>
+
+<body>
+  <h1>Homework 3 - Part 1</h1>
+
+  <a href="hw3.html">Back</a>
+
+  <input id="homework-average" placeholder="Homework Average">
+  <input id="mid-term-exam" placeholder="Mid-Term Exam Score">
+  <input id="final-exam" placeholder="Final Exam Score">
+  <input id="participation" placeholder="Participation">
+
+  <button id="calculate">Calculate</button>
+  <button id="clear">Clear</button>
+
+  <p id="output"></p>
+</body>
+
+</html>
