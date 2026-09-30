@@ -12,6 +12,7 @@
 
   <script>
     $(document).ready(function () {
+      $(document).tooltip()
       $("#calculate").click(function () {
         $("#output")
           .hide()
@@ -62,6 +63,7 @@
 
   <a href="hw3.html">Back</a>
 
+  <input id="name" placeholder="Seller's Name" type="text" title="Please make sure that the salesperson's name is spelled correctly">
   <input id="item1" placeholder="Item 1 Qty" type="number">
   <input id="item2" placeholder="Item 2 Qty" type="number">
   <input id="item3" placeholder="Item 3 Qty" type="number">
