@@ -21,6 +21,7 @@
           const value = +$(`#item${i}`).val();
           if (value < 0) {
             $("#output").html("Item quantity cannot be negative!");
+            return;
           }
           quantities.push(value);
         }
