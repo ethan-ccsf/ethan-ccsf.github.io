@@ -34,6 +34,10 @@
           $("#square").html("Number must be at least 2!");
           return;
         }
+        if (size > 10) {
+          $("#square").html("Number must be no more than 10!");
+          return;
+        }
         if (size >= 2) {
           let text = "";
           text += "*".repeat(size) + "\n";
