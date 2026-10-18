@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework 4 - Part 2</title>
+  <meta name="description" content="Homework 4 for the CNIT 133 JavaScript course at CCSF">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+    tr:nth-child(2n){
+        background-color: green;
+    }
+    tr:nth-child(2n+1){
+        background-color: lightgreen;
+    }
+  </style>
+
+  <script>
+    $(document).ready(function () {
+      const interests = [0.05, 0.06, 0.07];
+      for (const interest of interests) {
+        const percent = Math.round(interest * 100);
+        const tableId = `table-at-${percent}-percent`;
+        $('#tables').append(`<h3>Compound Interest Table at ${percent}%</h3>`);
+        $('#tables').append(`<table id="${tableId}"></table>`);
+        $(`#${tableId}`).append(`<tr>
+          <th>Year</th>
+          <th>Amount on Deposit</th>
+          <th>Interest Rate</th>
+        </tr>`)
+        for (let year = 1; year <= 5; year++) {
+          let row = "<tr>";
+          row += `<td>${year}</td>`
+          row += `<td>$${(1000 * Math.pow(1 + interest, year)).toFixed(2)}</td>`
+          row += `<td>${interest}</td>`
+          row += "</tr>";
+          $(`#${tableId}`).append(row);
+        }
+      }
+    });
+
+  </script>
+</head>
+
+<body>
+  <h1>Homework 4 - Part 2</h1>
+
+  <a href="hw4.html">Back</a>
+
+  <h2>Learn About Compound Interest</h2>
+  <span>Starting Principal: $1000</span>
+
+  <div id="tables"></div>
+</body>
+
+</html>

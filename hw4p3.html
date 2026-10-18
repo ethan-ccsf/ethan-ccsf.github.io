@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework 4 - Hollow Square</title>
+  <meta name="description" content="Homework 3 for the CNIT 133 JavaScript course at CCSF">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <style>
+    pre {
+      letter-spacing: 4px;
+      line-height: 12px;
+    }
+  </style>
+
+
+  <script>
+    $(document).ready(function () {
+      $("#draw").click(function () {
+        $("#square")
+          .hide()
+          .fadeTo("slow", 1);
+        $("#square").empty();
+        const size = +$("#size").val();
+        if (Number.isNaN(size)) {
+          $("#square").html("Please type numbers only");
+          return;
+        }
+        if (size < 2) {
+          $("#square").html("Number must be at least 2!");
+          return;
+        }
+        if (size >= 2) {
+          let text = "";
+          text += "*".repeat(size) + "\n";
+          for (let i = 0; i < size - 2; i++) {
+            text += "*" + " ".repeat(size - 2) + "*" + "\n";
+          }
+          text += "*".repeat(size) + "\n";
+          $("#square").html(text);
+        }
+      });
+      $("#reset").click(function () {
+        $("#square").html("");
+      });
+    });
+
+  </script>
+</head>
+
+<body>
+  <h1>Homework 4 - Hollow Square</h1>
+
+  <a href="hw4.html">Back</a>
+
+  <input id="size" placeholder="Square size">
+  <button id="draw">Draw</button>
+  <button id="reset">Reset</button>
+
+  <pre id="square"></pre>
+</body>
+
+</html>
