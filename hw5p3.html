@@ -32,7 +32,6 @@
           .fadeTo("slow", 1);
         const state = $("#state").val().toLowerCase();
         const data = datas.find((data) => data[0].toLowerCase() === state || data[1].toLowerCase() === state)
-        console.log(data);
         if (data === undefined) {
           $("#output").html("<em>Sorry, we do not have information about that state. Please enter one of the following states: Alabama, Alaska, Arizona, Arkansas, California, or Colorado. </em>");
           return;
