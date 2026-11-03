@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework 5 - Part 1</title>
+  <meta name="description" content="Homework 5 for the CNIT 133 JavaScript course at CCSF">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+  <style>
+    .form {
+      justify-items: start;
+      line-height: 4px;
+    }
+  </style>
+  <script>
+    $(document).ready(function () {
+      const clear = () => {
+        $("#name").val("");
+        $("input[name='age-group']").prop("checked", false);
+        $("input[name='browser']").prop("checked", false);
+        $("#movie").val("");
+      }
+      $("#submit").click(function () {
+        $("#output")
+          .hide()
+          .fadeTo("slow", 1);
+        const name = $("#name").val();
+        if (name === "") {
+          $("#output").html("Please fill out your name!");
+          return;
+        }
+        const ageGroup = $("input[name='age-group']:checked").val();
+        if (ageGroup === undefined) {
+          $("#output").html("Please fill out your age group!");
+          return;
+        }
+        const browsers = $("input[name='browser']:checked").map(function () {
+          return $(this).val();
+        }).get();
+        if (browsers.length === 0) {
+          $("#output").html("Please fill out your browsers!");
+          return;
+        }
+        const movieGenre = $("#movie").val();
+        if (movieGenre === "") {
+          $("#output").html("Please fill out your favorite movie genre!");
+          return;
+        }
+        $("#square")
+          .hide()
+          .fadeTo("slow", 1);
+        clear();
+        $("#output").html("Thanks, your data was submitted!");
+      });
+      $("#clear").click(function() {
+        clear();
+        $("#output").html("");
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <h1>Homework 5 - Part 1</h1>
+
+  <a href="hw5.html">Back</a>
+  <div class="form">
+    <input id="name" type="text" placeholder="Full name">
+    <br>
+    <p>Age group:</p>
+    <div>
+      <input id="age-group-under-21" type="radio" name="age-group" value="under-21">
+      <label for="age-group-under-21">Under 21</label>
+    </div>
+    <br>
+    <div>
+      <input id="age-group-21-50" type="radio" name="age-group" value="21-50">
+      <label for="age-group-21-50">21-50</label>
+    </div>
+    <br>
+    <div>
+      <input id="age-group-over-50" type="radio" name="age-group" value="over-50">
+      <label for="age-group-over-50">Over 50</label>
+    </div>
+    <br>
+    <p>Browsers used:</p>
+    <div>
+      <input id="browser-firefox" type="checkbox" name="browser" value="firefox">
+      <label for="browser-firefox">Firefox</label>
+    </div>
+    <br>
+    <div>
+      <input id="browser-edge" type="checkbox" name="browser" value="edge">
+      <label for="browser-edge">Edge</label>
+    </div>
+    <br>
+    <div>
+      <input id="browser-chrome" type="checkbox" name="browser" value="chrome">
+      <label for="browser-chrome">Chrome</label>
+    </div>
+    <br>
+    <div>
+      <input id="browser-safari" type="checkbox" name="browser" value="safari">
+      <label for="browser-safari">Safari</label>
+    </div>
+    <br>
+    <p>Favorite movie genre:</p>
+    <div>
+      <select id="movie">
+        <option value="">Pick a genre</option>
+        <option value="action">Action</option>
+        <option value="comedy">Comedy</option>
+        <option value="drama">Drama</option>
+        <option value="documentary">Documentary</option>
+        <option value="science-fiction">Science Fiction</option>
+      </select>
+    </div>
+  </div>
+  <br>
+  <button id="submit">Submit</button>
+  <button id="clear">Clear</button>
+
+  <div id="output"></div>
+
+</body>
+
+</html>

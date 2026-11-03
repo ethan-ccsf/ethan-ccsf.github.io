@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework 5 - Part 2</title>
+  <meta name="description" content="Homework 5 for the CNIT 133 JavaScript course at CCSF">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+  <style>
+    .form {
+      justify-items: start;
+      line-height: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Homework 5 - Part 2</h1>
+
+  <a href="hw5.html">Back</a>
+  <div class="form">
+    <div>
+      <select id="page1" onchange="if (this.value !== '') { window.open(this.value); }">
+        <option value="">Pick page #1</option>
+        <option value="https://www.ccsf.edu/">CCSF</option>
+        <option value="https://www.khanacademy.org/math">Khan Academy</option>
+        <option value="https://www.desmos.com/">Desmos</option>
+      </select>
+    </div>
+    <br>
+    <div>
+      <select id="page2">
+        <option value="">Pick page #2</option>
+        <option value="https://www.merriam-webster.com/">Merriam Webster</option>
+        <option value="https://www.wikipedia.org/">Wikipedia</option>
+        <option value="https://www.youtube.com">Youtube</option>
+      </select>
+    </div>
+  </div>
+  <button onclick="if ($('#page2').val() !== '') { window.open($('#page2').val()); }">Go to page #2</button>
+
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework 5 - Part 3</title>
+  <meta name="description" content="Homework 5 for the CNIT 133 JavaScript course at CCSF">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+  <style>
+    .form {
+      justify-items: start;
+      line-height: 4px;
+    }
+  </style>
+  <script>
+    const datas = [
+      ["AL", "Alabama", "Montgomery", "4,903,185"],
+      ["AK", "Alaska", "Juneau", "731,545"],
+      ["AZ", "Arizona", "Phoenix", "7,278,717"],
+      ["AR", "Arkansas", "Little Rock", "3,017,825"],
+      ["CA", "California", "Sacramento", "39,512,223"],
+      ["CO", "Colorado", "Denver", "5,758,736"],
+    ]
+    $(document).ready(function () {
+      $("#submit").click(function () {
+        $("#output")
+          .hide()
+          .fadeTo("slow", 1);
+        const state = $("#state").val().toLowerCase();
+        const data = datas.find((data) => data[0].toLowerCase() === state || data[1].toLowerCase() === state)
+        console.log(data);
+        if (data === undefined) {
+          $("#output").html("<em>Sorry, we do not have information about that state. Please enter one of the following states: Alabama, Alaska, Arizona, Arkansas, California, or Colorado. </em>");
+          return;
+        }
+        $("#output").html("<b>Thanks for your inquiry! Here is the information you requested:</b>" +
+          "<br>State Abbr: " + data[0] +
+          "<br> State Name: " + data[1] +
+          "<br> Capital: " + data[2] +
+          "<br> Population: " + data[3]);
+      });
+      $("#clear").click(function () {
+        $("#state").val("");
+        $("#output").html("");
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <h1>Homework 5 - Part 3</h1>
+
+  <a href="hw5.html">Back</a>
+  <div class="form">
+    <input id="state" type="text" placeholder="State">
+  </div>
+  <button id="submit">Submit</button>
+  <button id="clear">Clear</button>
+  <div id="output"></div>
+
+</body>
+
+</html>
