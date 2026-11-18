@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework 6 - Part 2</title>
+  <meta name="description" content="Homework 6 for the CNIT 133 JavaScript course at CCSF">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+  <style>
+    .form {
+      display: grid;
+      grid-row: 1;
+    }
+  </style>
+  <script>
+    $(document).ready(function () {
+      $("#find").click(function () {
+        $("#output")
+          .hide()
+          .fadeTo("slow", 1);
+        const text = $("#text").val().toLowerCase();
+        const targetCharacter = $("#target-character").val().toLowerCase();
+        let occurences = 0;
+        for (let i = 0; i < text.length; i++) {
+          if (text.charAt(i) === targetCharacter) {
+            occurences++;
+          }
+        }
+        if (occurences === 0) {
+          $("#output").html("");
+          const popup = window.open("about:blank", "", `width=300,height=100,left=${(window.screen.width - 300) / 2}`);
+          popup.document.write(`<p>Search character ${targetCharacter} not found in the content you typed</p>`);
+          popup.document.close();
+          return;
+        }
+        $("#output").html(`The character '${targetCharacter}' appears ${occurences} time(s)`);
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <h1>Homework 6 - Part 2</h1>
+
+  <a href="hw6.html">Back</a>
+  <div class="form">
+    <textarea id="text" placeholder="Enter block of text here"></textarea>
+    <input id="target-character" type="text" placeholder="Search for character" maxlength="1">
+  </div>
+  <button id="find">Find</button>
+  <div id="output"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework 6 - Part 1</title>
+  <meta name="description" content="Homework 6 for the CNIT 133 JavaScript course at CCSF">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+  <style>
+    .form {
+      justify-items: start;
+      line-height: 4px;
+    }
+  </style>
+  <script>
+    $(document).ready(function () {
+      $("#submit").click(function () {
+        $("#output")
+          .hide()
+          .fadeTo("slow", 1);
+        const number = parseFloat($("#number").val());
+        const numberParts = number.toString().split(".");
+        if (numberParts.length < 2 || numberParts[1].length < 4) {
+          $("#output").html("Please enter a number with at least 4 digits after the decimal place!");
+          return;
+        }
+        $("#output").html(`You entered: ${number}<br>Rounded to the nearest integer = ${Math.round(number)}<br>Square root rounded to an integer = ${Math.round(Math.sqrt(number))}<br>Rounded to the nearest tenth = ${number.toFixed(1)}<br>Rounded to the nearest hundredth = ${number.toFixed(2)}<br>Rounded to the nearest thousandth = ${number.toFixed(3)}`);
+      });
+      $("#clear").click(function () {
+        $("#number").val("");
+        $("#output").html("");
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <h1>Homework 6 - Part 1</h1>
+
+  <a href="hw6.html">Back</a>
+  <div class="form">
+    <input id="number" type="text" placeholder="Number with decimals">
+  </div>
+  <button id="submit">Submit</button>
+  <button id="clear">Clear</button>
+  <div id="output"></div>
+
+</body>
+
+</html>
