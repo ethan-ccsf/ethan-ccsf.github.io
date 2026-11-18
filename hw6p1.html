@@ -24,7 +24,7 @@
           .fadeTo("slow", 1);
         const number = parseFloat($("#number").val());
         const numberParts = number.toString().split(".");
-        if (numberParts.length < 2 || numberParts[1].length < 4) {
+        if (isNaN(+$("#number").val()) || numberParts.length < 2 || numberParts[1].length < 4) {
           $("#output").html("Please enter a number with at least 4 digits after the decimal place!");
           return;
         }
