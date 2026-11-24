@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework 7 - Part 1</title>
+  <meta name="description" content="Homework 7 for the CNIT 133 JavaScript course at CCSF">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+  <style>
+    body {
+      height: auto;
+    }
+
+    .form {
+      justify-items: start;
+      line-height: 4px;
+    }
+
+    .text {
+      text-align: left;
+      max-width: 800px;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  </style>
+
+  <script>
+    $(document).ready(function () {
+      function updateStyles() {
+        $("#text").css({
+          "background-color": $("input[name='background']:checked").val(),
+          "text-decoration": $("#underline").is(":checked") ? "underline" : "none",
+          "font-weight": $("#bold").is(":checked") ? "bold" : "normal",
+          "font-style": $("#italic").is(":checked") ? "italic" : "normal",
+          "font-size": $("#font-size").val()
+        });
+      };
+
+      $(".form input").on("change", updateStyles);
+      $("#font-size").on("change", updateStyles);
+      updateStyles();
+    });
+  </script>
+</head>
+
+<body>
+  <h1>Part 1 - Dynamic Styling</h1>
+  <a href="hw7.html">Back</a>
+  <div class="form">
+    <p>Background color:</p>
+    <div>
+      <input id="background-white" type="radio" name="background" value="#ffffff" checked>
+      <label for="background-white">White</label>
+    </div>
+    <br>
+    <div>
+      <input id="background-blue" type="radio" name="background" value="#ddeeff">
+      <label for="background-blue">Blue</label>
+    </div>
+    <br>
+    <div>
+      <input id="background-yellow" type="radio" name="background" value="#ffff99">
+      <label for="background-yellow">Yellow</label>
+    </div>
+    <br>
+    <p>Text formatting:</p>
+    <div>
+      <input id="underline" type="checkbox">
+      <label for="underline">Underline</label>
+    </div>
+    <br>
+    <div>
+      <input id="bold" type="checkbox">
+      <label for="bold">Bold</label>
+    </div>
+    <br>
+    <div>
+      <input id="italic" type="checkbox">
+      <label for="italic">Italic</label>
+    </div>
+    <br>
+    <p>Font size:</p>
+    <div>
+      <select id="font-size">
+        <option value="1rem">Default</option>
+        <option value="1.2rem">Medium</option>
+        <option value="1.4rem">Large</option>
+        <option value="1.6rem">Extra large</option>
+      </select>
+    </div>
+  </div>
+  <br>
+  <div id="text" class="text">
+    <p>The great white shark (Carcharodon carcharias), also known as the white shark, white pointer, or great white, is
+      a large shark. It is closely related to the mako sharks, the porbeagle, and the salmon shark. It is a robustly
+      built species with a grayish upperside and a white underside. The white shark is one of the largest living shark
+      and fish species, though it is still smaller than the whale shark and basking shark. It has about three hundred
+      triangular, serrated teeth that are continuously replaced. Its massive, fatty liver can reach over a quarter of
+      its body weight, providing buoyancy and storing energy. The species is partially warm-blooded, an adaptation that
+      allows it to remain active in colder waters.</p>
+
+    <p> White sharks inhabit tropical and temperate ocean waters around the world and can be found both near coasts and
+      in the open ocean. Populations are most concentrated at the Pacific and Atlantic of North America and in the
+      waters of southern Africa and Oceania. They are a highly migratory species, traveling between the coast and the
+      open ocean and even between continents. The white shark preys on marine mammals such as seals and dolphins, as
+      well as squid and fish, including other sharks. It also scavenges whale carcasses. Though normally an apex
+      predator, the species is sometimes preyed on by orcas. White sharks are generally solitary, but may gather in
+      aggregations, particularly at feeding sites. They may communicate and establish dominance hierarchies with body
+      language. The species reproduces with pups hatching from eggs inside the female before being born live. Juvenile
+      white sharks typically inhabit shallower water and are limited to feeding on smaller prey.</p>
+
+    <p>The white shark has a fearsome reputation among the public. It is featured in the 1974 novel Jaws and its 1975
+      film adaptation, both of which portray it as a ferocious man-eater. In reality, white sharks normally do not prey
+      on humans, and the majority of bites are due to curiosity or possibly mistaken identity. Many attempts have been
+      made to keep the species in captivity, but specimens either ended up dying or being released. White shark
+      aggregations have attracted tourists who may view them from boats or from inside shark cages.</p>
+  </div>
+  <span>(This text is from Wikipedia)</span>
+</body>
+
+</html>

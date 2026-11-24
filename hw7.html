@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework 7 - Object Model and Event Model</title>
+  <meta name="description" content="Homework 7 for the CNIT 133 JavaScript course at CCSF">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+  <style>
+    .description {
+      display: none;
+    }
+  </style>
+
+  <script>
+    $(document).ready(function () {
+      $(".part-toggle").on("click", function () {
+        const description = $(this).next(".description");
+        description.stop(true, true).slideToggle();
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <h1>CNIT 133 Homework 7 - Object Model and Event Model</h1>
+  <button class="part-toggle" type="button">Part 1</button>
+  <div class="description" id="part1">
+    <p>Change text with form controls.</p>
+    <p><a href="hw7p1.html">Part 1 - Dynamic Styling</a></p>
+  </div>
+  <button class="part-toggle" type="button">Part 2</button>
+  <div class="description" id="part2">
+    <p>Navigate to other homework parts.</p>
+    <p><a href="hw7p2.html">Part 2 - Interactive Navigation</a></p>
+  </div>
+  <a href="index.html">Back</a>
+</body>
+
+</html>

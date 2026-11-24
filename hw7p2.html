@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework 7 - Part 2</title>
+  <meta name="description" content="Homework 7 for the CNIT 133 JavaScript course at CCSF">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+  <style>
+    .homework-nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      box-sizing: border-box;
+      width: 100%;
+      margin: 0px;
+      padding: 0.5rem;
+      background: #c9b3a1;
+      list-style: none;
+    }
+  </style>
+  <script>
+    $(document).ready(function () {
+      $(".nav-item").on("mouseenter", function () {
+        $(".dropdown").hide();
+        $(this).children(".dropdown").show();
+      });
+      $(".nav-item").on("mouseleave", function () {
+        $(this).children(".dropdown").hide();
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <h1>Part 2 - Interactive Navigation</h1>
+  <a href="hw7.html">Back</a>
+  <br>
+  <nav class="homework-nav">
+    <div class="nav-item">
+      <button type="button">Homework 2</button>
+      <ul class="dropdown">
+        <li><a href="hw2p1.html">Part 1</a></li>
+        <li><a href="hw2p2.html">Part 2</a></li>
+      </ul>
+    </div>
+    <div class="nav-item">
+      <button type="button">Homework 3</button>
+      <ul class="dropdown">
+        <li><a href="hw3p1.html">Part 1</a></li>
+        <li><a href="hw3p2.html">Part 2</a></li>
+      </ul>
+    </div>
+    <div class="nav-item">
+      <button type="button">Homework 4</button>
+      <ul class="dropdown">
+        <li><a href="hw4p1.html">Part 1</a></li>
+        <li><a href="hw4p2.html">Part 2</a></li>
+        <li><a href="hw4p3.html">Part 3</a></li>
+      </ul>
+    </div>
+  </nav>
+</body>
+
+</html>
